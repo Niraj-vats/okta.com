@@ -1,0 +1,693 @@
+@font-face {
+    font-family: "aeonik";
+    src: url('./Aeonik-Regular-c672e6fbaa411f5719f3c63dc9a47999.ttf');
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "aeonik";
+}
+
+img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main{
+    padding: var(--spacing-5xl) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}
+
+.page1{
+    position: relative;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    height: 80vh;
+    overflow: hidden;
+    font-size: var(--font-size-xl);
+}
+
+.page1 h1{
+    font-size: var(--font-size-5xl);
+    font-weight: 500;
+}
+
+.page1 p{
+    margin:var(--spacing-md) 0;
+}
+
+.page1-text{
+    padding:var(--spacing-md) var(--spacing-3xl);
+    z-index: var(--zindex-dropdown);
+    position: absolute;
+    margin:7% auto;
+    width: 50%;
+    overflow: hidden;
+}
+
+.page1-text>div{
+    margin:var(--spacing-4xl) 0;
+}
+
+.page1 .image-container{
+    overflow: hidden;
+    width: 50%;
+    height:60vh;
+}
+
+.btn-third{
+    padding: var(--spacing-md);
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    border-radius: var(--border-radius-lg);
+}
+
+.btn-third:hover{
+    color: var(--primary-color);
+    background-color: var(--text-color);
+}
+
+.btn-fourth{
+    cursor: pointer;
+    border-radius: var(--border-radius-lg);
+    background-color: transparent;
+    padding: var(--spacing-md);
+    color:var(--primary-color);
+    font-size: var(--font-size-lg);
+    border:var(--border-width) var(--border-style) var(--primary-color);
+}
+
+.btn-fourth:hover{
+    opacity: .8;
+}
+
+.page2{
+    font-size: var(--font-size-4xl);
+    padding:var(--spacing-3xl)
+}
+
+.page2 p:nth-child(2){
+    color:var(--text-tertiary-color);
+    margin: var(--spacing-md) 0;
+}
+
+.page3{
+    background-image: url('./assets/2_Product_Background_1Top.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: var(--font-size-xl);
+    color:var(--text-color)
+}
+
+.sec3-1, .sec3-2{
+    display: flex;
+    padding: 0 var(--spacing-3xl);
+}
+
+.sec3-1>div{
+    width: 50%;
+    padding: var(--spacing-3xl);
+}
+
+.sec3-1>div>p{
+    padding-bottom: var(--spacing-4xl);
+    color:var(--text-tertiary-color)
+}
+
+.sec3-1-2{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-3xl);
+}
+.sec3-1 span{
+    font-size: var(--font-size-4xl);
+}
+
+.page8 h1{
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    font-size: var(--font-size-3xl);
+    font-weight: 500;
+}
+
+.page4{
+    background-image: url('./assets/HomepagePromoBackgroundd_WithOverlay.webp');
+    margin:var(--spacing-2xl) auto;
+    width: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: var(--border-radius-xxl);
+    color:var(--primary-color);
+    padding:var(--spacing-3xl);
+    display: flex;
+    align-items: center;
+    gap:var(--spacing-2xl)
+}
+
+.page4 h1,.page4>div{
+    font-weight: 500;
+    width:50%;
+}
+
+.page4 p{
+    font-size: var(--font-size-xl);
+}
+
+.page4 .btn1,.page4 .btn2{
+    padding:  var(--spacing-lg)var(--spacing-xl);
+    background-color: transparent;
+    font-size:var(--font-size-md);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    margin-top:var(--spacing-2xl);
+}
+
+.page4 .btn1{
+    background-color: var(--primary-color);
+}
+
+.page4 .btn2{
+    border:var(--border-width) var(--border-style) var(--primary-color);
+    color:var(--primary-color)
+}
+
+.page5{
+    width:90%;
+    margin:var(--spacing-2xl) auto;
+    display: flex;
+    flex-direction: column;
+    gap:var(--spacing-2xl)
+}
+
+.page5 h1{
+    font-weight: 500;
+    font-size: var(--font-size-4xl);
+}
+
+.page5 .card{
+    height:30rem;
+    width:100%;
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    background-color: var(--text-color);
+    padding: var(--spacing-xl);
+    color: var(--primary-color);
+}
+
+.page5 .card a,.page5 .card-text{
+    color: var(--primary-color);
+    }
+
+.page5 .card img{
+    width:50%;
+    height:33rem;
+    padding: var(--spacing-2xl);
+}
+
+.page5 .card-body{
+    display: flex;
+    flex-direction: column;
+    gap:var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+
+.page6{
+    padding:var(--spacing-2xl) 0;
+    width:90%;
+    margin: auto;
+}
+
+.page6-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.page6-1 img{
+    width:5rem;
+}
+
+.page6-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;  
+    padding:var(--spacing-xl) 0 0 0;
+    margin-top: var(--spacing-2xl);
+    border-top:var(--border-width) var(--border-style) var(--text-color);
+}
+
+.page6 .card{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    height:12rem;
+    width:20%;
+}
+
+.page6 .card-body{
+    padding:0 var(--spacing-md);
+}
+
+.page6 .card-title{
+    font-weight: 700;
+    color:var(--text-tertiary-color);
+    font-size:var(--font-size-base);
+    margin: var(--spacing-xl) 0;
+}
+
+.page6-2>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page6 h3{
+    color:var(--text-tertiary-color);
+    transform:translateY(3rem);
+    font-weight: 500;
+}
+
+.page6 a{
+    position: absolute;
+    bottom: 0%;
+}
+
+.page7{
+    position: relative;
+    width:100%;
+    height:50rem;
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    background-image: url('./assets/gradient.jpg');
+}
+
+.page7 ul{
+    display: flex;
+    flex-direction: column;
+    gap:var(--spacing-xl);
+    font-weight: 500;
+}
+
+.page7>div{
+    width:50%;
+}
+
+.page7 img{
+    width:80%;
+    height:45rem;
+    object-fit: cover;
+    border-radius: var(--border-radius-xl);
+}
+
+.page7 .card{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.page7 .card-body{
+    padding:var(--spacing-xs) var(--spacing-4xl);
+    display: flex;
+    flex-direction: column;
+    gap:var(--spacing-lg);
+}
+
+.page7 .img-content{
+    position: absolute;
+    bottom:15%;
+    right:14%;
+    width:12rem;
+    border-radius: var(--border-radius-xl);
+    display: flex;
+    flex-direction: column;
+    gap:var(--spacing-4xl);
+    padding:var(--spacing-md);
+    background-color: var(--primary-color);
+}
+
+
+
+.page8 .card{
+    position: relative;
+    height:25rem;
+    cursor: pointer;
+}
+
+.page8 .card a{
+    position: absolute;
+    bottom: 10%;    
+}
+
+.page8 .card p{
+    position: absolute;
+    bottom: 45%;    
+}
+
+.page8 .card,.page8 .card p,.page8 .card a{
+    background-color: var(--tertiary-color);
+    transition: all ease 0.3s;
+}
+.page8 .card:hover,.page8 .card:hover p,.page8 .card:hover a{
+    background-color: var(--button-color);
+    transform: translateY(-.5rem);
+    color:var(--primary-color);
+}
+
+.page8 .get-started{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    border-top:var(--border-width) var(--border-style) var(--tertiary-color);
+}
+
+.page8 .get-started>div{
+    width: 50%;
+    color: var(--text-tertiary-color);
+    font-size:var(--font-size-xl);
+    padding:var(--spacing-2xl);
+}
+
+.page8 .btn1,.page8 .btn2{
+    margin:var(--spacing-xl) 0;
+    padding:var(--spacing-lg);
+    cursor: pointer;
+    border-radius:var(--border-radius-lg)
+}
+
+.page8 .cards{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:var(--spacing-lg)
+}
+
+.page8 .btn1{
+    background-color: var(--text-color);
+    color:var(--primary-color);
+    border:none;
+}
+
+.page8 .btn2{
+    background-color: var(--primary-color);
+    border: var(--border-width) var(--border-style) var(--border-color);
+}
+
+.page8 .btn1:hover{
+    background-color:var(--button-color);
+    border: none;
+}
+
+.page8 .btn2:hover{
+    color:var(--text-hover-color);
+    border: var(--border-width) var(--border-style) var(--text-hover-color);
+}
+
+.footer .btn1{
+    background-color: var(--text-color);
+    color:var(--primary-color);
+    padding: var(--spacing-lg);
+    border-radius:var(--border-radius-lg);
+    cursor: pointer;
+    border:none;
+    margin-top:var(--spacing-xm);
+    border: var(--border-width) var(--border-style) var(--primary-color);
+}
+
+.footer .btn1:hover{
+    color:var(--text-hover-color);
+    border:var(--border-width) var(--border-style) var(--text-hover-color)
+}
+
+@media screen and (max-width:1200px) {
+    .page1{
+        flex-direction: column;
+        height: 140vh;
+    }
+    .page1 .image-container{
+        width:100%;
+        height: 20vh;
+    }
+    .page1 img,.page1-text~img{
+        width:100vw;
+        height:70vh;
+        object-position: top;
+    }
+    .page1-text{
+        font-size: var(--font-size-md);
+        margin:0 auto;
+        padding: var(--spacing-xl);
+        width: 100%;
+    }
+    .page1-text h1{
+        font-size: var(--font-size-4xl);
+        margin:var(--spacing-3xl) 0;
+    }
+    .page1-text>div{
+        margin:var(--spacing-3xl) 0;
+    }
+}
+
+@media screen and (max-width:992px){
+    .main{
+        padding:var(--spacing-4xl) var(--spacing-md);
+    }
+   .page6-2>div,.page6-2{
+        flex-direction: column;
+        width:100%;
+        height:46rem;
+        margin:var(--spacing-2xl) var(--spacing-md);
+    }
+    .page6-2>h3{
+        transform: translate(2rem,-0.5rem);
+    }
+    .page6 .card{
+        width:100%;
+        height: 6rem;;
+    }
+    .sec3-1>div{
+        padding:var(--spacing-xm)
+    }
+    .page8 .card-body,.page8 .get-started>div{
+        padding:var(--spacing-xl);
+    }
+    .page8 .get-started h1{
+        font-size: var(--font-size-2xl);
+    }
+    .page8 .card{
+        height:18rem;
+    }
+    .page8 .card-text{
+        transform: translateY(4rem);
+    }
+    .sec3-1>div>p{
+        padding-bottom:var(--spacing-md)
+    }
+    
+    
+    .page2{
+        margin:var(--spacing-xl) 0;
+    }
+    .page2 p,.sec3-1,.sec3-1 span{
+        font-size:var(--font-size-lg)
+    }
+    .page4,.page7{
+        flex-direction: column;
+    }
+    .page4 h1, .page4 p,.page4>div{
+        width:100%;
+    }
+    .page7 ul{
+        flex-direction: row;
+        overflow: hidden;
+    }
+    .page7{
+        height:120vh;
+    }
+    .page7>div{
+        width:100%;
+        height:80%;
+        overflow: hidden;
+    }
+    .page7 .card{
+        height:10rem;
+    }
+    .page7 img{
+        width:100%;
+    }
+    .page7 .img-content{
+        width:80%;
+        bottom:5%;
+        right:10%;
+    }
+    .page5 .card{
+        width:100%;
+        padding:var(--spacing-sm);
+    }
+    .page5 .card img{
+        padding: var(--spacing-xl);
+    }
+}
+
+@media screen and (max-width:786px){
+    .page8 .cards{
+        flex-direction: column;
+    }
+    .page8 .card{
+        width: 90%;
+    }
+    .page6-1{
+        flex-direction: column;
+        gap:var(--spacing-2xl)
+    }
+    .page6-1 img{
+        width:8rem;
+    }
+    .page8 .btn1, .page8 .btn2{
+        margin:0.5rem;
+    }
+    .page5 .card{
+        flex-direction: column;
+        height:120vh;
+    }
+    .page5 .card-img-top{
+        width: 100%;
+        padding: 0;
+    }
+    .footer>div:nth-child(1),.footer>section{
+        flex-direction: column;
+        padding:var(--spacing-2xl)
+    }
+    .footer , .footer>div>section{
+        width:100%
+    }
+    .page8 .get-started{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .page8 .get-started h1{
+        padding: var(--spacing-xl);
+    }
+    .page8 .get-started>div{
+        width:100%;
+    }
+    .page8-btns{
+        display: flex;
+        justify-content: center;
+        margin-top: var(--spacing-lg);
+    }
+    .page1{
+        flex-direction: column;
+        height: 120vh;
+    }
+    .page1 img,.page1-text~img{
+        width:100vw;
+        height:60vh;
+        object-position: top;
+    }
+    .page1-text h1{
+        font-size: var(--font-size-xl);
+        margin:var(--spacing-xl) 0;
+    }
+    .page1-text>div{
+        margin:var(--spacing-xl) 0;
+    }
+    .page5 .card img{
+        width:100%;
+        height:70vh;
+    }
+}
+@media screen and (max-width:576px){
+    .footer>section>div,.sec3-1{
+        flex-direction: column;
+        gap:var(--spacing-md);
+        
+    }
+    .sec3-2 .card-body,.page4,.page5 .card-body,.page2{
+        padding:var(--spacing-xm);
+    }
+    .sec3-1,.sec3-2{
+        padding:0;
+    }
+    .page7{
+        height:120vh;
+    }
+    .page7>div{
+        height:20rem;
+    }
+    .page7 img{
+        height:15rem;
+    }
+    .page7 .img-content{
+        gap:var(--spacing-lg);
+    }
+    .page8 h1,.page7 .card .card-body{
+        padding:var(--spacing-lg) var(--spacing-sm);
+    }
+    .page6-2 h3{
+        transform: translate(0);
+    }
+    .sec3-1-2,.sec3-1-2>div,.sec3-1,.sec3-1>div{
+        width:100%;
+    }
+    .page8-btns{
+        flex-direction: column;
+    }
+    .page6-2{
+        height:50rem;
+        margin:0
+    }
+    .page4{
+        margin:var(--spacing-2xl) auto;
+        padding: var(--spacing-4xl) var(--spacing-md);
+    }
+    .page4>div>div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .navbar2{
+        padding: 0;
+    }
+    .navbar2 .btn{
+        padding:0;
+    }
+    .navbar2 .globe,.navbar2 .navbar-cta .btn:nth-child(2){
+        display: none;
+    }
+    
+
+}
+@media screen and (max-width:400px){
+    .page1{
+        flex-direction: column;
+        height: 120vh;
+    }
+    .page1 img,.page1-text~img{
+        width:100vw;
+        height:60vh;
+        object-position: top;
+    }
+    .page1-text h1{
+        font-size: var(--font-size-xl);
+        margin:var(--spacing-md) 0;
+    }
+    .page1-text>div{
+        margin:var(--spacing-md) 0;
+    }
+}

@@ -1,0 +1,2 @@
+"use strict";(self.__LOADABLE_LOADED_CHUNKS__=self.__LOADABLE_LOADED_CHUNKS__||[]).push([[4884],{20348:function(e,_,i){i.r(_);var t=i(59231);i(2784);_.default=e=>{let{children:_,overrideStyles:i,id:r,isActive:s=!0}=e;return(0,t.tZ)("div",{id:r,sx:{...s&&{variant:"container"},...i}},_)}}}]);
+//# sourceMappingURL=Container-c08d75047d81d728b350.js.map

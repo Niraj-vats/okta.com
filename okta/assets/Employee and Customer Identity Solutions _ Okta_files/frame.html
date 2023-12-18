@@ -1,0 +1,26 @@
+
+<!-- saved from url=(0030)https://auth0.com/api/co/frame -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./heap-1279799279.js.download"></script><script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  
+  heap.load("1279799279", { secureCookie: true });
+  
+  window.onload = () => {
+    window.parent.postMessage({ type: 'co_ab_id', id: heap.userId }, "https://www.okta.com");
+    
+    const onTrack = (event) => {
+      if ( 
+        event.origin !== "https://www.okta.com" ||
+        event.data?.type !== 'co_track'
+      )
+        return;
+      
+      heap.track(event.data?.eventName, event.data?.metadata);
+      
+      window.parent.postMessage({ type: 'co_tracked', eventId: event.data?.eventId }, "https://www.okta.com");
+    };
+    
+    window.addEventListener('message', onTrack);
+  };
+</script>
+</head><body></body></html>

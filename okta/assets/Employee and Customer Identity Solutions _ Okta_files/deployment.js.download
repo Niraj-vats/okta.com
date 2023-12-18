@@ -1,0 +1,308 @@
+var client_view_id="219076835";
+function loadLiftAI(){
+	var c=document.createElement("script");
+	c.type="text/javascript";
+	c.src="https://visitor-scoring.marketlinc.com/public/js/snippet.js?viewId\x3d"+client_view_id;
+	c.id="vs_snippet_script_id";document.getElementsByTagName("head")[0].appendChild(c)
+}
+try{
+      loadLiftAI()
+} catch(c){}
+
+
+
+var ML_getCookie = function (ckname) {
+	var ml_ckname = ckname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(ml_ckname) == 0) {
+			return c.substring(ml_ckname.length, c.length);
+		}
+	}
+	return "";
+};
+
+var ML_setCookie = function (ckname, ckvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	var expires = "expires="+ d.toUTCString();
+	document.cookie = ckname + "=" + ckvalue + ";domain=.okta.com;" + expires + ";path=/";
+};
+
+function ML_getUrlParameter(name) {
+		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+		var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+		var results = regex.exec(location.search);
+		return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function ml_intent_band(cookieValue){
+	var ml_cstatus = cookieValue;
+	var ml_score_int = parseInt(ml_cstatus.split('-')[1]);
+	var ml_vs_band = "";
+	if(ml_score_int>60){
+		ml_vs_band = "High"
+	} else if(ml_score_int>30 && ml_score_int<=60){
+		ml_vs_band = "Mid"
+	} else{
+		ml_vs_band = "Low"
+	}
+	ML_setCookie("vs_intent", ml_vs_band);
+	return ml_vs_band;
+}
+
+/*
+ * Get Google Visitor ID
+ * using function same as Middleware
+ * July 06 - Moved to visitor-scoring-b
+ * Aug 12 - Moved to Visitor-scoring-c
+ * Sep 13 - Added code for Login event tracking.
+ * Nov 17 - Added additional CSS identifier for Login button click.
+ * June 19 2023 -  Added company name tracking from 6sense Object (Okta's own 6sense)
+ * Aug 17 2023 - Enabled GA4 Tracking
+ * Oct 31 2023 - Added Drift Chat Event Tracking v2
+ */
+
+function ML_getClientId() {
+	 try {
+			 var ML_tracker = ga.create("UA-15777010-7", 'auto', 'ML_tracker', {
+                transport: 'beacon'
+              });
+	 } catch (e) {
+
+	 }
+	 if (ML_tracker !== undefined) {
+			 return ML_tracker.get('clientId');
+	 } else {
+			 try {
+					 var name = "_ga";
+					 var matches = document.cookie.match(new RegExp(
+							 "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+					 ));
+					 var cidLong = matches ? decodeURIComponent(matches[1]) : undefined;
+					 var tmp = cidLong.split('.');
+					 var cid = tmp[2] + '.' + tmp[3];
+					 if (cid !== null | cid !== undefined | cid !== "") {
+							 return cid;
+					 } else {
+							 console.log("ERROR! Can't get clientId.")
+					 }
+			 } catch (e) {
+
+			 }
+	 }
+}
+
+	var ml_ga_load_count = 0;
+	var ml_ga_load_Interval = setInterval(function(){
+		if("ga" in window || ml_ga_load_count > 8){
+			clearInterval(ml_ga_load_Interval)
+			setTimeout(function(){
+				try{
+					window.ml_tracker = ga.create("UA-15777010-7", 'auto', 'ml_tracker', {
+						transport: 'beacon'
+					});
+
+					var ml_login_link_header = document.querySelector("#myokta-signin")
+					if(ml_login_link_header == null){
+						ml_login_link_header = document.querySelector("#gatsby-focus-wrapper > header > div.css-1gojp5g > div.header__login.css-19wynt9 > div > button")
+					}
+					if(ml_login_link_header){
+						ml_login_link_header.addEventListener("click",function(){
+							if(window.scoring){
+								scoring.tracking.pageEvents({
+								"event": "Login Event"
+								})
+							}
+							ML_setCookie("vs_login","Login",30)
+						});
+					}
+
+					var ML_vs_vid = ML_getCookie('vs_vid')
+					// ml_tracker.set('dimension13', ml_cstatus);
+					ml_tracker.send("event","Lift AI Score",ml_intent_band(ML_getCookie('vs_conv_ai')), ML_getCookie('vs_conv_ai'),{
+						nonInteraction: true
+					});
+				}catch(error){
+					// DO nothing
+				}
+
+			},3000);
+
+
+			setTimeout(function(){
+				try {
+					window.ml_tracker = ga.create("UA-15777010-7", 'auto', 'ml_tracker', {
+						transport: 'beacon'
+					});
+
+					var ML_vs_vid = ML_getCookie('vs_vid')
+					// ml_tracker.set('dimension13', ml_cstatus);
+					ml_tracker.send("event","Lift AI Score",ml_intent_band(ML_getCookie('vs_conv_ai')), ML_getCookie('vs_conv_ai'),{
+							nonInteraction: true
+						});
+				}catch(error){
+					// Do nothing
+				}
+
+			},10000);
+
+		}
+		ml_ga_load_count++;
+	}, 1000);
+
+	var ml_gtag_load_count = 0;
+	var ml_gtag_load_Interval = setInterval(function(){
+		if("gtag" in window || ml_gtag_load_count > 8){
+			clearInterval(ml_gtag_load_Interval)
+				try {
+                  setTimeout(function(){
+                    if(window.gtag){
+                      gtag("config", "G-QKMSDV5369",{"send_page_view": false})
+                        gtag("event", "Lift AI Score",{
+                          "lai_intent" : ml_intent_band(ML_getCookie('vs_conv_ai')),
+                          "lai_score" : ML_getCookie("vs_conv_ai"),
+                          "lai_vid"  : ML_getCookie("vs_vid"),
+						  "send_to"	:	"G-QKMSDV5369"
+                        });
+                      }
+                  },3000)
+				} catch (e) {
+					// DO Nothing
+				}
+
+				/*
+				* 6sense Ojbect.
+				*/
+				setTimeout(function(){
+					try{
+						var ml_6si = JSON.parse(localStorage.getItem("_6senseCompanyDetails"));
+						if(ml_6si !== null && typeof(ml_6si.company) !== 'undefined' && ml_6si.company.name != "" && typeof(ml_6si.company.domain) !== 'undefined' && ML_getCookie("ml_6si") == ""){
+							scoring.tracking.pageEvents({
+								'6s_company': localStorage.getItem("_6senseCompanyDetails"),
+								'lai_intent': ml_intent_band(ML_getCookie('vs_conv_ai'))
+							});
+							ML_setCookie("ml_6si","Sent",400);
+						}
+					} catch (error) {
+						//Do nothing
+					}
+				},10000)
+				
+
+		}
+		ml_ga_load_count++;
+	}, 1000);
+
+	var ml_drift_load_count = 0;
+	var ml_impression_count = 0;
+	var ml_drift_load_Interval = setInterval(function(){
+		if((typeof(window.drift) != 'undefined') || (ml_drift_load_count>8)){
+			clearInterval(ml_drift_load_Interval);
+			try{
+				drift.on('ready', function(api, payload) {
+					drift.api.setUserAttributes({
+						'Lift AI Intent Segment': ml_intent_band(ML_getCookie('vs_conv_ai')),
+						'Lift AI Score': ML_getCookie('vs_conv_ai'),
+						'Lift AI VID'	:	ML_getCookie('vs_vid')
+					});
+
+					if(typeof(payload.data) != "undefined" && typeof(payload.data.widgetVisible) != "undefined"){
+						if(ml_impression_count<1){
+						  window.scoring.tracking.pageEvents({
+							"event": "DRIFT_CHAT_OFFERED",
+							"d_vid" : ML_getCookie("driftt_aid")
+						  }) ;
+						  ml_impression_count++;
+						}
+					}
+				});
+
+				drift.on("conversation:playbookFired", function(data) {
+					// console.log("Playbook fired: " + JSON.stringify(data))
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_PLAYBOOK_FIRED",
+						"d_campaign"	: data.campaignId,
+						"d_playbook"	: data.playbookId,
+						"d_cid"		: data.conversationId,
+						"d_vid" : ML_getCookie("driftt_aid")
+					}) ;
+	
+				});
+	
+				drift.on("conversation:playbookClicked", function(data) {
+					// console.log("Playbook fired: " + JSON.stringify(data))
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_PLAYBOOK_CLICKED",
+						"d_campaign"	: data.campaignId,
+						"d_playbook"	: data.playbookId,
+						"d_cid"		: data.conversationId,
+						"d_vid" : ML_getCookie("driftt_aid")
+					}) ;
+				});
+	
+				/*
+				*  Email Submit Capture
+				*  
+				*/
+	
+				window.drift.on("emailCapture", function(data) {
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_EMAIL_CAPTURED"
+					}) ;
+				});
+	
+				/*
+				*  Conversation Start
+				*  @Captures start of a conversation along with conversation id
+				*/
+	
+	
+				window.drift.on('startConversation', function (event) {
+					// console.log("startConversation")
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_CHAT_STARTED",
+						"d_cid": JSON.stringify(event.conversationId),
+						"d_vid" : ML_getCookie("driftt_aid")
+					}) ;
+	
+				});
+	
+				/*
+				*      Meeting Booked
+				*/
+	
+				window.drift.on("scheduling:meetingBooked", function(data) {
+					// console.log("scheduling:meetingBooked")
+					// console.log("user booked a meeting with " + data.teamMember.name);
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_MEETING_BOOKED"
+					}) ;
+				});
+	
+				/*
+				*      Phone captured in chat
+				*/
+				window.drift.on("phoneCapture", function(data) {
+					// console.log("User provided a phone number: " + JSON.stringify(data))
+					window.scoring.tracking.pageEvents({
+						"event": "DRIFT_PHONE_NUMBER_CAPTURED"
+					}) ;
+				})
+	
+			}catch(error){
+				window.scoring.tracking.pageEvents({
+					"event": error
+				  }) ;
+			}
+		}
+		ml_drift_load_count++;
+	})
+
+
+				
